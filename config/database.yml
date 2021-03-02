@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  user: <%= ENV.fetch("USER") %>
+
+development:
+  development:
+    <<: *default
+    database: many_dbs_<%= ENV["SHARD"] || "one" %>
+
+  two:
+    <<: *default
+    database: many_dbs_two
